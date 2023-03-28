@@ -2,6 +2,8 @@ package com.platz.market.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity //Define la arquitectura del resto del modelo, dará a entender a JAva que esta clase se comporta como una clase que mapea una tabla en la BD
 @Table(name = "productos") //en name va el nombre de la tabla en la BD productos
 public class Producto {
@@ -28,7 +30,36 @@ public class Producto {
 
     private Boolean estado;
 
+
+    //Esto permitira para recuperar a que categoria pertenece un producto
+    @ManyToOne  //Muchos productos a 1 categoria
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)  //clase producto esta relacionado con categorias por id_categoria(ese es el nombre del JoinColum a definir)
+    //insertable = false, updatable = false : Significa que atraves de esta relacion no vamos a insertar, borrar y actualizar una nueva categoria, para hacerlo se debe hacer en el entity categoria
+    private Categoria categoria;  //categoria respalda, en la clase categoria tendra que ir mappedBy a categoria - @OneToMany(mappedBy = "categoria")
+
+
+    //Relacion de productos a Compras_Productos
+    @OneToMany(mappedBy = "producto")  ////Relacion de una categoria tiene muchos productos, se agrega categoria porque en la clase Producto se escribio categoria al atributo Categoria en la relacion
+    //mappedBy sig. por quien esta mapeado o que relacion la respalda
+    private List<ComprasProducto> productos;   //Lista de producto se va a llamar productos
+
+
+
     //Generate de Getters and Setters seleccionar todos los atributos de la clase
+
+    public List<ComprasProducto> getProductos() {
+        return productos;
+    }
+    public void setProductos(List<ComprasProducto> productos) {
+        this.productos = productos;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public Integer getIdProducto() {
         return idProducto;

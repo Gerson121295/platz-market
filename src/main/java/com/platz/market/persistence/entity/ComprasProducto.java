@@ -1,8 +1,6 @@
 package com.platz.market.persistence.entity;
 
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 
 /* En la tabla compras_producto de la BD hay columnas que tiene clave primarias compuesta
@@ -23,7 +21,34 @@ public class ComprasProducto {
     private Boolean estado;
 
 
+    //Establecer la relacion con la tabla compra
+
+    @ManyToOne //Muchas ComprasProducto en 1 Compra
+    @JoinColumn(name = "id_compra", insertable = false, updatable = false)  //el id_compra une la clase ComprasProducto con Compras //todos las clases que lleven JoinColumn deben llevar insertable y updatable=false
+    private Compra compra; //Atributo privado Compra se llama compra, (compra ira en la relacion de Compra a ComprasProducto)
+
+    //Establecer la relacion con la tabla Producto
+
+    @ManyToOne  //Muchas ComprasProducto en 1 producto
+    @JoinColumn(name = "id_producto", insertable = false, updatable = false)// id_producto es el campo que une la clase ComprasProducto con Producto
+    private Producto producto; //Atributo privado Producto llamado producto, producto sera mapeado en la clase producto al hacer la relacion.
+
     //Generate Getters and Setters de todos los atributos
+
+
+    public Compra getCompra() {
+        return compra;
+    }
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+    public Producto getProducto() {
+        return producto;
+    }
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
 
     public ComprasProductoPK getId() {
         return id;
