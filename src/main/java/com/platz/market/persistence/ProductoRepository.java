@@ -2,9 +2,13 @@ package com.platz.market.persistence;
 
 import com.platz.market.persistence.crud.ProductoCrudRepository;
 import com.platz.market.persistence.entity.Producto;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+
+//Como esta es una clase que esta interactuando directamente con la BD es buena practica decorarla con la anotacion @Repository
+@Repository //indicarle a Spring que esta clase se encarga de interacturar con la BD(Aquí se hacen las operaciones a aplicar a las tablas) o tambien se puede usar @Component(generalizacion de este tipo de anotaciones, componente de Spring)
 
 public class ProductoRepository {
     private ProductoCrudRepository productoCrudRepository;
@@ -27,4 +31,38 @@ public class ProductoRepository {
         return productoCrudRepository.findByCantidadStockLessThanAndEstado(cantidad, true);
     }
 
+        //Retornar un producto en particular (por id)
+    public Optional<Producto> getProducto(int idProducto){
+        return productoCrudRepository.findById(idProducto);  //findById : encuentra registro por la clave primaria del producto
+    }
+
+    //Metodo para Guardar un producto
+    public Producto save(Producto producto) {
+        return productoCrudRepository.save(producto);    //los repositoris de spring data ofrecen el metodo save que recibe una entidad a guardar, y es el producto que se recibe como parametro
+    }
+
+    //Metodo para eliminar un producto
+    public void delete(int idProducto) {   //no se quiere que retorne nada se utiliza void, se puede eleiminar un producto mandando el objeto completo o enviando su clave primaria
+        productoCrudRepository.deleteById(idProducto);
+    }
+
+    //Metodo para actualizar un producto
+
+    public Producto update(Producto newProducto, int id){
+        return productoCrudRepository.findById(id)
+                .map(
+                        producto -> {
+                            producto.setCantidadStock(newProducto.getCantidadStock());
+                            producto.setCategoria(newProducto.getCategoria());
+                            producto.setEstado(newProducto.getEstado());
+                            producto.setNombre(newProducto.getNombre());
+                            producto.setCodigoBarras(newProducto.getCodigoBarras());
+                            producto.setPrecioVenta(newProducto.getPrecioVenta());
+                            return productoCrudRepository.save(producto);
+                        }
+                ).get();
+    }
+
+
 }
+
