@@ -29,8 +29,7 @@ public interface ProductMapper {
     Product toProduct(Producto producto);
 
     //Otro mapeador
-    List<Product> toProducts(List<Producto> productos); //No debemos definir el @Mapping porque ya internamente mappedStruct se va a encargar de que esto se va a comportar de la misma manera porque es el mismo tipo de conversion
-
+    List<Product> toProducts(List<Producto> productos); //Recibe 1 lista de productos, y los comvierte en una lista de Product //No debemos definir el @Mapping porque ya internamente mappedStruct se va a encargar de que esto se va a comportar de la misma manera porque es el mismo tipo de conversion
 
     //Conversion Contraria
 

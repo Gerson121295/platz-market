@@ -27,7 +27,7 @@ public interface ProductoCrudRepository extends CrudRepository <Producto, Intege
     //List<Producto> getByCategoria(int idCategoria);   //buscar los productos por el atributo: idCategoria, hay que respetata el camelCase: se escribe "IdCategoria", y como parametro recibe el idCategoria(como se llama dentro de la clase)
 
     //Query Methods: Recupera productos por la cantidad de Stock, productos agotados
-    Optional<List<Producto>>findByCantidadStockLessThanAndEstado(int cantidadStock, boolean estado);  //cantidadStock respentando camel case es CantidadStock, LessThan(menos que), And("y" para agregar mas consulta) Estado(estado en la clase)
+    Optional<List<Producto>>findByCantidadStockLessThanAndEstado(int cantidadStock);  //cantidadStock respentando camel case es CantidadStock, LessThan(menos que), And("y" para agregar mas consulta) Estado(estado en la clase)
 
 
 }
