@@ -5,6 +5,7 @@ import com.platz.market.domain.repository.ProductRepository;
 import com.platz.market.persistence.crud.ProductoCrudRepository;
 import com.platz.market.persistence.entity.Producto;
 import com.platz.market.persistence.mapper.ProductMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,9 +20,12 @@ import java.util.Optional;
 //public class ProductoRepository {
 public class ProductoRepository implements ProductRepository { //se agrego implemets para orientar nuestro ProductoRespository al dominio debemos implementar la Interfaz de ProductRepsoitory(repository) esto habla en terminos lo que queremos retornar finalmente
 
+    @Autowired //Le dice a spring que los objetos que reciban esta anotacion se le va a ceder el control a spring para que cree esas instancias, gracias a eso no se tendra que preocuparnos para hacer objetos manualmente, lo cual es una mala practica porque se estaria violando el principio de creacion de dependecia
+    //Para agregar @Autowired se debe estar seguro que el atributo a inyectar sea un componente de spring,"no tenga anotaciones la clase como repository", asi el codigo quedara limpio y estaremos resptando el princio de Inyeccion de dependencia
     private ProductoCrudRepository productoCrudRepository;
 
     //Para hacer la comversion de Producto a Product debemos llamar el atributo de ProductMapper(mapper)
+    @Autowired
     private ProductMapper mapper; //ProductMapper lo llamo mapper
 
 
