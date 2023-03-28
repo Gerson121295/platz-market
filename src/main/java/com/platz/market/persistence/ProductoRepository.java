@@ -7,6 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+//ProductoRepository tiene todo para interacturar con la tabla producto de la BD con esto acoplamos nuestra app a la capa de la persistencia
+//y nuestro proyecto esta construido bajo un efoque de dominio,
+
+
 //Como esta es una clase que esta interactuando directamente con la BD es buena practica decorarla con la anotacion @Repository
 @Repository //indicarle a Spring que esta clase se encarga de interacturar con la BD(Aquí se hacen las operaciones a aplicar a las tablas) o tambien se puede usar @Component(generalizacion de este tipo de anotaciones, componente de Spring)
 
