@@ -14,6 +14,7 @@ public class Product {
 
     //Generate Getters and Setters
 
+
     public int getProductId() {
         return productId;
     }

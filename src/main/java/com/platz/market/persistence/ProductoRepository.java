@@ -104,8 +104,8 @@ public class ProductoRepository implements ProductRepository { //se agrego imple
 
     @Override
 
-    public Optional<List<Product>>getScarseProducts(int quantity) { //se le envia la cantidad que se considera escaso(si enviamos 20, traiga los producots menos de 20)
-    Optional<List<Producto>> productos = productoCrudRepository.findByCantidadStockLessThanAndEstado(quantity);
+    public Optional<List<Product>> getScarseProducts(int quantity) { //se le envia la cantidad que se considera escaso(si enviamos 20, traiga los producots menos de 20)
+    Optional<List<Producto>> productos = productoCrudRepository.findByCantidadStockLessThanAndEstado(quantity, true);
     return productos.map(prods -> mapper.toProducts(prods));    //no tengo un mapeador que convierta una lista de opcionales, por lo que se hace un mapeador de los productos, map retorna lo que se esta haciendo en la expresion
         //la arrow function recibe los productos que tiene adentro y los convierte a prods y los retorna
     }
