@@ -33,7 +33,7 @@ public class Compra {
 
 
     //Relacion a compras_productos
-    @OneToMany(mappedBy = "compra") //producto
+    @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL}) //tenia compra* //producto //cascade para que se guarde en cascada, con esto:  {CascadeType.ALL} todos los procesos que se hagan contra la BD de una compra van a incluir en cascada sus productos
     private List<ComprasProducto> productos;  //lista COmprasProducto que se llama productos
 
 
@@ -42,6 +42,7 @@ public class Compra {
     public List<ComprasProducto> getProductos() {
         return productos;
     }
+
     public void setProductos(List<ComprasProducto> productos) {
         this.productos = productos;
     }

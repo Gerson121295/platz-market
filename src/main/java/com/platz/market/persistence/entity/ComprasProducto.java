@@ -24,6 +24,7 @@ public class ComprasProducto {
     //Establecer la relacion con la tabla compra
 
     @ManyToOne //Muchas ComprasProducto en 1 Compra
+    @MapsId("idCompra") //añadimos el nombre de la clave primaria que queremos que se enlace //Con esto cuando comprasProducto se guarde en cascada va a saber a que clave primaria pertence cada 1 de los productos que esta en una compra
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)  //el id_compra une la clase ComprasProducto con Compras //todos las clases que lleven JoinColumn deben llevar insertable y updatable=false
     private Compra compra; //Atributo privado Compra se llama compra, (compra ira en la relacion de Compra a ComprasProducto)
 
