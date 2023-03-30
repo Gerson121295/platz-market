@@ -13,7 +13,7 @@ public interface PurchaseItemMapper {
 
     //source ComprasProducto(entity) a PurchaseItem(domain)
     @Mappings({
-            @Mapping(source = "id.idProducto", target = "productoId"), //id.idProducto debido por que esa clase tiene clave compuesta(id definidos en otra clase(ComprasProductoPK))
+            @Mapping(source = "id.idProducto", target = "productId"), //id.idProducto debido por que esa clase tiene clave compuesta(id definidos en otra clase(ComprasProductoPK))
             @Mapping(source = "cantidad", target = "quantity"),
          // @Mapping(source = "total", target = "total"), //como la fuente y el target se llaman igual no lo necesitamos  lo borramos(no es necesario meter ese mapeo en el mapper)
             @Mapping(source = "estado", target = "active"),

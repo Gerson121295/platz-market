@@ -12,7 +12,7 @@ public class Cliente {
     @Id
     private String id; //no tiene un GenerateValue porque es el DPI o codigo del cliente
     private String nombre;
-    private String apellido;
+    private String apellidos;
     private Long celular;
     private String direccion;
 
@@ -48,12 +48,12 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public Long getCelular() {

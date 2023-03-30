@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface CompraCrudRepository extends CrudRepository<Compra, Integer> { //CrudRepostory recibe el entity (Compra) y su tipo de clave primaria)
 
-    Optional<List<Compra>> findByIdClient(String idCliente);
+    Optional<List<Compra>> findByIdCliente(String idCliente);
 }

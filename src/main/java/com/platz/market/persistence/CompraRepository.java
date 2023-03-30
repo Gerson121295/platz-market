@@ -32,7 +32,7 @@ public class CompraRepository implements PurchaseRepository {
     //Obtener lista de compras por el cliente
     @Override
     public Optional<List<Purchase>> getByClient(String clientId) {
-        return compraCrudRepository.findByIdClient(clientId)
+        return compraCrudRepository.findByIdCliente(clientId)
                 .map(compras -> mapper.toPurchases(compras)); //map sirve para operar lo que viene en ese optional si es que viene si no hay nada en el optional no se ejecuta
 
     }
