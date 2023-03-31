@@ -1,6 +1,7 @@
 package com.platz.market.persistence.entity;
 
 import jakarta.persistence.*;
+//import jakarta.persistence  cambiar jakarta a javax porque se cambio version 3.0.5 a 2.7.6
 
 import java.time.LocalDateTime;
 import java.util.List;
